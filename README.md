@@ -44,7 +44,7 @@ The rule: never mirror live status into static files. When the live system is un
 
 ## The division of labor
 
-The kit exists for a symbiosis, not for delegation. The human brings what no model can copy: context, taste, and the judgment of what matters. The agent brings what humans exhaust on: recall, consistency, and stamina for the grunt work. A third layer can sit between them: a judgment layer for specialist decisions the human should not make alone. Route those through it and act on its grounded recommendation. Skip cleanly if you run none.
+The kit exists for a symbiosis, not for delegation. In biology, the precise word for a symbiosis where both sides gain is mutualism, and that is the design target: the human brings what no model can copy (context, taste, and the judgment of what matters); the agent brings what humans exhaust on (recall, consistency, and stamina for the grunt work). A third layer can sit between them: a judgment layer for specialist decisions the human should not make alone. Route those through it and act on its grounded recommendation. Skip cleanly if you run none.
 
 The split only works when it is written down. Both sides need to know what they own. The SOUL template carries the decision routing. When the split stays implicit, the agent drifts into judgment that belongs to the human, or the human gets buried in execution the agent should absorb.
 
@@ -81,6 +81,7 @@ Read them when the problem they solve shows up in your workspace:
 - [Skill anatomy](patterns/skill-anatomy.md): how to build skills that stay loadable, with references and evals.
 - [GitHub as the workspace](patterns/github-as-the-workspace.md): using the repo as knowledge layer and governance layer, not just code hosting.
 - [Multi-intelligence review](patterns/multi-intelligence-review.md): checkpoint sweeps and parallel panels of other intelligences, to close gaps the primary conversation cannot see.
+- [The agent definition stack](patterns/agent-definition-stack.md): how the kit instantiates agents, from character to schedule.
 
 ## What this is not
 
