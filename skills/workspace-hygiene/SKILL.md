@@ -34,6 +34,12 @@ description: >
 - [ ] Open work has a canonical item in the live tracker, or is explicitly reported as unlinked.
 - [ ] Tracker-unavailable mode is reported as unverified, never replaced with memory or local cache.
 
+### 3. Decision records
+
+- [ ] Every decision record (ADR) has a review condition: a concrete change in reality that reopens the decision.
+- [ ] Review conditions are evaluated against current reality this pass. A condition that has become true is surfaced to the human as an agenda item, not silently closed.
+- [ ] Records that no longer match reality are flagged for revision, not defended.
+
 ### 4. Ceremony weight
 
 Overkill is not a one-time admission. It is a state that returns as the workspace grows. Check it:

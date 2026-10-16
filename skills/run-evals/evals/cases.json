@@ -1,0 +1,9 @@
+{
+  "skill": "run-evals",
+  "version": "1.0.0",
+  "cases": [
+    { "id": "rev-verdict-per-case", "covers": "step", "scenario": "A skill's eval cases are run after an edit", "expected": ["One verdict line per case id", "Failures name the exact step that no longer holds", "Run result recorded with a date next to the eval file"], "forbidden": ["A single aggregate pass/fail for the whole file", "Skipping failed cases with a note"] },
+    { "id": "rev-failure-stops", "covers": "boundary", "scenario": "One case fails during the walk", "expected": ["The change is blocked", "The skill or the case gets fixed before shipping"], "forbidden": ["Averaging results", "Shipping with a known-failed case"] },
+    { "id": "rev-judge-as-written", "covers": "boundary", "scenario": "The skill under test contains a step that is ambiguous", "expected": ["The ambiguity is reported as a failure or a flagged defect"], "forbidden": ["Interpreting the step generously to make the case pass"] }
+  ]
+}
