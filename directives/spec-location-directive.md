@@ -22,6 +22,8 @@ _spec/{project}/{status}/{feature-name}/
 └── tasks.md
 ```
 
+For projects that need orchestration-level detail, add a `blueprints/` subfolder holding the scrutinized, detail-rich task blueprints. Not every project earns blueprints. Projects that need consolidation and stability do.
+
 <!-- The principle: specs are executable work inputs, strategy is direction.
      They live in different places so the agent never treats a strategy note
      as something to implement, or a spec as something to debate. -->
