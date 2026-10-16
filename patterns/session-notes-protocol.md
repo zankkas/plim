@@ -43,6 +43,17 @@ Each session prepends exactly one entry below the header:
 
 The newest entry is the first thing a fresh session reads at boot. Prepending makes recency free: no search, no timestamps to parse. The older an entry, the deeper it sinks. If an entry needs constant revisiting, it is not a note, it is a document, and it belongs in the wiki or a spec.
 
+## Graduation: when a note becomes something else
+
+Not every decision stays a note. At close, each decision gets one question: **would a fresh agent need this to act correctly?**
+
+- **Yes, and it is a durable fact or procedure** → graduate to the wiki. The wiki is the reference layer; notes are the provenance layer.
+- **Yes, and it changes how the system is built** → graduate to an ADR in the owning spec's `design.md`.
+- **Yes, but only for the next session** → it stays in the note as the next action.
+- **No, it only explains what happened** → it stays in the note and eventually sinks.
+
+Graduation happens at close only when it takes under two minutes. Everything else gets flagged for the periodic wiki ingest, which is where notes get pruned: once an entry's content lives in the wiki or a spec, the note keeps a one-line tombstone or loses the entry entirely. The notes stay short because the wiki holds the weight.
+
 ## Enforcement
 
-The close-session skill owns the write. One entry per session, written when the decision happens or at close, never batched later when the reasoning has faded.
+The end-of-session skill owns the write. One entry per session, written when the decision happens or at close, never batched later when the reasoning has faded.

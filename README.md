@@ -67,8 +67,17 @@ When the runtime supports hard guardrails, they sit underneath the hints: approv
 2. Fill the placeholders: agent name, human name, file paths, live tracker.
 3. Point the boot adapter (`AGENTS.md` or your runtime's equivalent) at the files.
 4. Create the session-notes file with its header block. See [patterns/session-notes-protocol.md](patterns/session-notes-protocol.md).
-5. Adopt the close-session skill first. It is the ritual that keeps the rest honest.
+5. Adopt the end-of-session skill first. It is the ritual that keeps the rest honest.
 6. Add directives and the wiki only when you feel the problem they solve.
+
+## The patterns
+
+Read them when the problem they solve shows up in your workspace:
+
+- [Session-notes protocol](patterns/session-notes-protocol.md): the decision log and its graduation rule.
+- [The two-truths split](patterns/two-truths-split.md): live status versus static knowledge.
+- [Skill anatomy](patterns/skill-anatomy.md): how to build skills that stay loadable, with references and evals.
+- [GitHub as the workspace](patterns/github-as-the-workspace.md): using the repo as knowledge layer and governance layer, not just code hosting.
 
 ## What this is not
 
