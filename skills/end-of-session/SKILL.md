@@ -25,10 +25,10 @@ One question settles it: will anyone act on this work before you see it again? Y
 
 ## Mode: DONE
 
-1. **Audit the note.** Read today's entry. If continuous capture missed a decision, add it now, from what is still in context. Do not reconstruct what is already gone.
-2. **Classify in passing, under two minutes.** For each decision ask: would a fresh agent need this to act correctly? If yes and graduating it takes under two minutes, do it now: a wiki page, an ADR in the spec, or a flag for the next hygiene pass. Never research at exit time.
-3. **Identify the canonical work item** in the tracker named by the compass. If none exists, record that. Do not create one to justify the close.
-4. **Reconcile the tracker.** Update next action and blockers. Change status only when the work objectively did so. Ending a chat does not close an issue.
+1. **Audit the note.** Read today's entry. If continuous capture missed a decision, add it now, from what is still in context. Do not reconstruct what is already gone; anything missed that is no longer in context gets flagged, by name, for the next hygiene pass.
+2. **Classify in passing, under two minutes.** For each decision made today ask: would a fresh agent need this to act correctly? If yes and graduating it takes under two minutes, do it now: a wiki page, an ADR in the owning spec's `design.md`, or a flag for the next hygiene pass. Never research at exit time.
+3. **Identify the canonical work item** in the tracker named by the compass. If none exists, record that in the session note. Do not create one to justify the close.
+4. **Reconcile the tracker.** Update next action and blockers. Change status only when the work objectively did so. Ending a chat does not close an issue. If the tracker cannot be reached, mark the work item unverified in the close report; never copy or reconstruct its state.
 5. **Verify before reporting.** Run only the relevant checks: working tree, targeted tests, live tracker state when claiming external state.
 6. **Report at planning altitude:** decision, implication, risk, next action. Mention uncommitted files.
 
@@ -36,7 +36,7 @@ One question settles it: will anyone act on this work before you see it again? Y
 
 1. **Crystallize.** Update the truth files the next agent will read: spec requirements and design, task files showing the true next step. Keep status in the live tracker, where it belongs.
 2. **Clean the path.** Archive or delete notes that would mislead the next agent. Fix outdated claims in the project README.
-3. **Write the bridge.** A paste-ready prompt for the next session. See [references/bridge-prompts.md](references/bridge-prompts.md). If your workspace runs a persona or judgment layer, embed the decision patterns the next session needs. Skip cleanly if none exists.
+3. **Write the bridge.** Start from variant A, the standard form, in [references/bridge-prompts.md](references/bridge-prompts.md): the goal, the files to read, the ritual to observe, the immediate next step. If your workspace runs a persona or judgment layer, move up to variant B and embed the decision patterns the next session needs. Skip cleanly if none exists.
 4. **Record.** Same note as DONE, marked as a handoff.
 
 ## The lightness rule
