@@ -1,6 +1,8 @@
 # Symbiotic Workspace
 
-*A way of working for humans and agents.* An open set of governance artifacts extracted from a live agent workspace that ran daily across multiple projects. Copy them, fill the placeholders, and adapt them to your own agent and projects.n agent workspace needs governance the way a team needs a charter and rituals. Agents are capable and stateless. Every session starts blank. Without written rules, each session invents its own habits, builds duplicate trackers, and drifts. This kit is a set of working artifacts that stop that drift.
+*A way of working for humans and agents.*
+
+An agent workspace needs governance the way a team needs a charter and rituals. Agents are capable and stateless. Every session starts blank. Without written rules, each session invents its own habits, builds duplicate trackers, and drifts. This kit is a set of working artifacts that stop that drift.
 
 It is extracted from a live agent workspace that ran daily across multiple projects. The artifacts here are generic. Copy them, fill the placeholders, and adapt them to your own agent and projects.
 
