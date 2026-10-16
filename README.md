@@ -40,6 +40,12 @@ Two kinds of truth live in the workspace, and they must never merge:
 
 The rule: never mirror live status into static files. When the live system is unreachable, report state as unverified. Never reconstruct it from memory or local caches. A static copy of status becomes a second, lying authority within days. See [patterns/two-truths-split.md](patterns/two-truths-split.md).
 
+## The division of labor
+
+The kit exists for a symbiosis, not for delegation. The human brings what no model can copy: context, taste, and the judgment of what matters. The agent brings what humans exhaust on: recall, consistency, and stamina for the grunt work. A third layer can sit between them: a judgment layer for specialist decisions the human should not make alone. Route those through it and act on its grounded recommendation. Skip cleanly if you run none.
+
+The split only works when it is written down. Both sides need to know what they own. The SOUL template carries the decision routing. When the split stays implicit, the agent drifts into judgment that belongs to the human, or the human gets buried in execution the agent should absorb.
+
 ## The boot protocol (two hops)
 
 Boot is a thin adapter, not a data dump.
