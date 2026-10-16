@@ -12,9 +12,9 @@ description: >
 
 ## During the session: capture as you go
 
-When a decision lands, record it now: prepend the session-note entry while the reasoning is fresh. A few lines, no ceremony, no research. This continuous loop is what makes the close cheap, and it is also the honest record: every decision is the decision made. The next one may supersede it, but it does not erase it.
+Decisions, ideas, limitations, and verified knowledge are recorded the moment they happen, by the capture-as-you-go skill. A few lines, no ceremony. That continuous loop is what makes this exit cheap, and it is the honest record: every decision is the decision made. A later one supersedes it. It does not erase it.
 
-If mid-session capture was skipped, the close catches it. Nothing else.
+The DONE audit below catches anything capture missed. Nothing else.
 
 ## First: pick the exit
 

@@ -74,7 +74,7 @@ When the runtime supports hard guardrails, they sit underneath the hints: approv
 
 Read them when the problem they solve shows up in your workspace:
 
-- [Session-notes protocol](patterns/session-notes-protocol.md): the decision log and its graduation rule.
+- [Session-notes protocol](patterns/session-notes-protocol.md): the decision log, its graduation rule, and capture as you go.
 - [The two-truths split](patterns/two-truths-split.md): live status versus static knowledge.
 - [Skill anatomy](patterns/skill-anatomy.md): how to build skills that stay loadable, with references and evals.
 - [GitHub as the workspace](patterns/github-as-the-workspace.md): using the repo as knowledge layer and governance layer, not just code hosting.
