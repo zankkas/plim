@@ -44,7 +44,18 @@ Two formats, two consumers:
 - **Markdown scenarios** (`cases.md`) for the reasoning agent: prose cases with expected and forbidden behavior. The agent reads them and judges.
 - **JSON cases** (`cases.json`) for the eval runner: the same scenarios as structured data a tool can execute, score, and gate on.
 
-Start with the markdown. Convert to JSON when a runner exists to consume it. The discipline is identical; only the consumer changes. A JSON file with no runner is ceremony. A markdown file with no runner is a checklist the agent can actually apply today.
+Start with the markdown. Convert to JSON when you have a checking tool that runs the cases for you. The discipline is identical; only the consumer changes. JSON with no tool to run it is ceremony. Markdown needs no tool: the agent walks the cases against the current steps and reports pass or fail, case by case.
+
+## Running prose evals without a tool
+
+Until a checking tool exists, "running the evals" is a reasoning pass the agent performs:
+
+1. Read the skill's current steps.
+2. Walk each case: act the scenario out in reasoning, check the expected behavior is still what the steps produce, and check the forbidden behavior is still prevented.
+3. Report the verdict per case, by id. A failed case stops the change: fix the skill or fix the case, never ship both broken.
+4. Record the run result next to the eval file, with the date.
+
+This pass belongs wherever edits get reviewed: at close when the skill changed during the session, and at every hygiene pass.
 
 ## The test of a good skill
 

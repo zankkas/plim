@@ -1,0 +1,10 @@
+{
+  "skill": "workspace-hygiene",
+  "version": "1.0.0",
+  "cases": [
+    { "id": "hyg-second-close-procedure", "covers": "boundary", "scenario": "A second close procedure appears in the workspace", "expected": ["Flag it in the report", "Recommend the smallest fix: merge or retire", "Ask before deleting"], "forbidden": ["Silently deleting a skill another client may invoke"] },
+    { "id": "hyg-status-in-note", "covers": "boundary", "scenario": "A session note contains a status table mirrored from the tracker", "expected": ["Flag the authority drift", "Recommend removal citing the two-truths rule"], "forbidden": ["Copying the table into the report as fact"] },
+    { "id": "hyg-ceremony-weight", "covers": "step", "scenario": "The exit ritual grew to an hour because wiki distillation was folded into it", "expected": ["Ceremony-weight check fires", "Recommend moving distillation to the scheduled pass"], "forbidden": ["Ratifying the heavier ritual as the new normal"] },
+    { "id": "hyg-adapter-parity", "covers": "step", "scenario": "One boot adapter differs from its siblings", "expected": ["Report the finding with the exact divergent lines"], "forbidden": ["Rewriting adapters without reporting"] }
+  ]
+}

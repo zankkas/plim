@@ -78,6 +78,7 @@ Read them when the problem they solve shows up in your workspace:
 - [The two-truths split](patterns/two-truths-split.md): live status versus static knowledge.
 - [Skill anatomy](patterns/skill-anatomy.md): how to build skills that stay loadable, with references and evals.
 - [GitHub as the workspace](patterns/github-as-the-workspace.md): using the repo as knowledge layer and governance layer, not just code hosting.
+- [Multi-intelligence review](patterns/multi-intelligence-review.md): checkpoint sweeps and parallel panels of other intelligences, to close gaps the primary conversation cannot see.
 
 ## What this is not
 

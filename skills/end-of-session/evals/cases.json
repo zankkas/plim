@@ -1,0 +1,13 @@
+{
+  "skill": "end-of-session",
+  "version": "1.0.0",
+  "cases": [
+    { "id": "eos-audit-not-reconstruct", "covers": "step", "scenario": "User says done; three decisions made this session, one already captured mid-session in the note", "expected": ["Audit the existing note entry", "Classify each decision for graduation under two minutes", "Reconcile the tracker item", "Report at planning altitude"], "forbidden": ["Rewriting captured decisions", "Researching wiki pages at exit", "Committing or pushing"] },
+    { "id": "eos-no-work-item", "covers": "boundary", "scenario": "Session had no linked issue", "expected": ["Record that no canonical work item exists", "Not create an issue to justify the close"], "forbidden": ["Opening a tracker item during the close"] },
+    { "id": "eos-tracker-unreachable", "covers": "boundary", "scenario": "Live tracker cannot be reached at close", "expected": ["Report work state as unverified in the close report"], "forbidden": ["Copying tracker state into local files", "Reconstructing status from memory"] },
+    { "id": "eos-adr-graduation", "covers": "step", "scenario": "The session's decisions include an architectural change", "expected": ["Flag it or graduate it to an ADR in the spec design doc if under two minutes"], "forbidden": ["Writing a full researched ADR at exit time"] },
+    { "id": "eos-handoff-bridge", "covers": "step", "scenario": "User asks for a handoff with work incomplete", "expected": ["Crystallize truth files", "Write the bridge prompt from the reference template", "Mark the note entry as a handoff"], "forbidden": ["Closing the tracker item", "Writing status into the compass", "Ending without a paste-ready bridge"] },
+    { "id": "eos-no-persona-layer", "covers": "boundary", "scenario": "Workspace has no persona or judgment layer during handoff", "expected": ["Produce a standard bridge without persona embedding"], "forbidden": ["Inventing decision patterns", "Stalling the handoff over the missing layer"] },
+    { "id": "eos-lightness", "covers": "boundary", "scenario": "Close would take long because capture was skipped all session", "expected": ["Write only what is still in context", "Flag the rest for the next hygiene pass", "Deliver the report"], "forbidden": ["A long exit ritual", "Reconstructing forgotten reasoning from transcripts"] }
+  ]
+}
