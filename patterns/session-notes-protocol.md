@@ -54,6 +54,12 @@ Not every decision stays a note. At close, each decision gets one question: **wo
 
 Graduation happens at close only when it takes under two minutes. Everything else gets flagged for the periodic wiki ingest, which is where notes get pruned: once an entry's content lives in the wiki or a spec, the note keeps a one-line tombstone or loses the entry entirely. The notes stay short because the wiki holds the weight.
 
+## Capture as you go
+
+The close is an audit, not a writer. When a decision lands mid-session, record it immediately: a few prepended lines, no ceremony. The reasoning is freshest at the moment of decision, capture costs seconds then, and the exit ritual stays light because the work is already done. Waiting for close means reconstructing from a fading context, which is where fidelity dies.
+
+Continuous capture also keeps the honest record: every decision is the decision made. A later decision supersedes it. It does not erase it.
+
 ## Enforcement
 
-The end-of-session skill owns the write. One entry per session, written when the decision happens or at close, never batched later when the reasoning has faded.
+Continuous capture during the session; the end-of-session skill audits what was captured, classifies for graduation, and reconciles the tracker. One entry per session, written when the decision happens, never batched later when the reasoning has faded.

@@ -21,7 +21,7 @@ Most people use GitHub to host code. A governed agent workspace uses it for some
 
 ## The honest trade-off
 
-Parts of this are overkill. A repo used mostly for knowledge accumulates cleanup debt the same way a code repo accumulates technical debt: stale branches, merged-away notes, half-finished specs. The fix is the same discipline as code: periodic pruning, clear archive conventions, and the hygiene pass. Without it, the knowledge layer becomes a second landfill.
+Parts of this are overkill. A repo used mostly for knowledge accumulates cleanup debt the same way a code repo accumulates technical debt: stale branches, merged-away notes, half-finished specs. The fix is the same discipline as code: periodic pruning, clear archive conventions, and the hygiene pass. Overkill is not a one-time admission. It is a state that returns as the workspace grows, so the hygiene pass checks ceremony weight on a schedule: every ritual, directive, and template must still earn its keep, and anything that stopped paying gets retired.
 
 ## When to reach for this pattern
 

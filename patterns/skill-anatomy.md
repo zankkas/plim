@@ -35,7 +35,7 @@ Skills drift. Steps get edited, triggers get broadened, and nobody notices until
 - One eval per step and one per boundary, minimum.
 - Run them when the skill changes, and when a session surfaces behavior the skill did not anticipate.
 
-Evals are also the promotion path: a skill that passes its evals can move between workspaces and runtimes with its guarantees intact.
+Evals are the regression gate that keeps a skill stable across versions: behavior that used to work must keep working after an edit. This is how a skill gets promoted between workspaces and runtimes with its guarantees intact, and how degradation gets caught before end users find it.
 
 ## The test of a good skill
 

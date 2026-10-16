@@ -34,7 +34,16 @@ description: >
 - [ ] Open work has a canonical item in the live tracker, or is explicitly reported as unlinked.
 - [ ] Tracker-unavailable mode is reported as unverified, never replaced with memory or local cache.
 
-### 4. References
+### 4. Ceremony weight
+
+Overkill is not a one-time admission. It is a state that returns as the workspace grows. Check it:
+
+- [ ] The exit ritual still takes minutes, not more. If the close grew heavy, move its weight to the scheduled passes.
+- [ ] Every directive still earns its place. A rule nobody has needed in weeks is a candidate for retirement.
+- [ ] Templates and wiki pages are still the shortest accurate version of what they hold.
+- [ ] One ceremony exists per moment. Two rituals for the same trigger means one is retirement-ready.
+
+### 5. References
 
 Spot-check paths named by the active adapters and operational skills. Flag missing paths. Do not silently create replacement files.
 
