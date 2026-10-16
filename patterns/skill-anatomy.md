@@ -37,6 +37,15 @@ Skills drift. Steps get edited, triggers get broadened, and nobody notices until
 
 Evals are the regression gate that keeps a skill stable across versions: behavior that used to work must keep working after an edit. This is how a skill gets promoted between workspaces and runtimes with its guarantees intact, and how degradation gets caught before end users find it.
 
+## Format follows the consumer
+
+Two formats, two consumers:
+
+- **Markdown scenarios** (`cases.md`) for the reasoning agent: prose cases with expected and forbidden behavior. The agent reads them and judges.
+- **JSON cases** (`cases.json`) for the eval runner: the same scenarios as structured data a tool can execute, score, and gate on.
+
+Start with the markdown. Convert to JSON when a runner exists to consume it. The discipline is identical; only the consumer changes. A JSON file with no runner is ceremony. A markdown file with no runner is a checklist the agent can actually apply today.
+
 ## The test of a good skill
 
 A fresh agent, one session in, finds the skill by trigger alone, executes it from the entry point alone, and checks itself against the completion criterion. If it needs the reference to survive the happy path, the split is wrong.

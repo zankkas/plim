@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Skill eval cases (machine-executable form)",
+  "description": "Same scenarios as cases.md, structured for an eval runner. Convert from markdown when a runner exists to consume it. Keep id stable across versions so regressions are traceable.",
+  "type": "object",
+  "required": ["skill", "cases"],
+  "properties": {
+    "skill": { "type": "string", "description": "Skill name this eval belongs to" },
+    "version": { "type": "string", "description": "Skill version these cases were last verified against" },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "scenario", "expected", "forbidden"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Stable case id; never rename, only deprecate" },
+          "covers": { "type": "string", "enum": ["step", "boundary", "trigger", "completion"], "description": "Which part of the skill this case proves" },
+          "scenario": { "type": "string", "description": "The situation, stated so an agent can act it out" },
+          "expected": { "type": "array", "items": { "type": "string" }, "minItems": 1, "description": "Behaviors that must happen" },
+          "forbidden": { "type": "array", "items": { "type": "string" }, "minItems": 1, "description": "Behaviors that must not happen" }
+        }
+      }
+    }
+  }
+}
