@@ -1,3 +1,10 @@
+---
+domain: {{DOMAIN}}
+type: log
+updated: {{DATE}}
+sources: []
+---
+
 # {{DOMAIN}} Wiki — Log
 
 Append-only. Newest entries first. One entry per wiki operation.

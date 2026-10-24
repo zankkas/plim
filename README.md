@@ -27,7 +27,7 @@ None of these are model problems. They are missing-structure problems.
 | Human profile | `PROFILE.md` | Who is it working with? Strengths, pitfalls, working style? |
 | Navigation | `compass.md` | Where is everything, and what is authoritative? |
 | Continuity | `session-notes/` | What was decided, and why? |
-| Directives | `directives/` | What hard rules always apply? |
+| Directives | `directives/`: [agent execution](directives/agent-execution-directive.md), [no documentation garbage](directives/no-documentation-garbage.md), [skill awareness](directives/skill-awareness-directive.md), [spec location](directives/spec-location-directive.md) | What hard rules always apply? |
 | Skills | `skills/` | How is a specific procedure run? |
 | Reference | `wiki/` | What is durably true? |
 

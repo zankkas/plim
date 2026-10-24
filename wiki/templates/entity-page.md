@@ -1,3 +1,10 @@
+---
+domain: {{DOMAIN}}
+type: entity
+updated: {{DATE}}
+sources: []
+---
+
 # {{PAGE_NAME}}
 
 <!-- Entity page: an actor, product, or system the workspace works with. -->
