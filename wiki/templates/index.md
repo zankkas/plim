@@ -1,7 +1,7 @@
 ---
 domain: {{DOMAIN}}
 type: index
-updated: {{DATE}}
+updated: {{YYYY-MM-DD}}
 sources: []
 ---
 

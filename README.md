@@ -27,11 +27,18 @@ None of these are model problems. They are missing-structure problems.
 | Human profile | `PROFILE.md` | Who is it working with? Strengths, pitfalls, working style? |
 | Navigation | `compass.md` | Where is everything, and what is authoritative? |
 | Continuity | `session-notes/` | What was decided, and why? |
-| Directives | `directives/`: [agent execution](directives/agent-execution-directive.md), [no documentation garbage](directives/no-documentation-garbage.md), [skill awareness](directives/skill-awareness-directive.md), [spec location](directives/spec-location-directive.md) | What hard rules always apply? |
+| Directives | `directives/` | What hard rules always apply? |
 | Skills | `skills/` | How is a specific procedure run? |
 | Reference | `wiki/` | What is durably true? |
 
 The agent reads identity, profile, and the compass at boot. It reads directives and skills only when relevant. It writes continuity and wiki during and after work.
+
+The directives that ship with the kit:
+
+- [Agent execution](directives/agent-execution-directive.md): how an agent executes work, from receiving a task to delivering results.
+- [No documentation garbage](directives/no-documentation-garbage.md): what not to write down.
+- [Skill awareness](directives/skill-awareness-directive.md): when to reach for a skill instead of improvising.
+- [Spec location](directives/spec-location-directive.md): where specifications live and how to find them.
 
 ## The two truths
 
