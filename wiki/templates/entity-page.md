@@ -1,7 +1,7 @@
 ---
 domain: {{DOMAIN}}
 type: entity
-updated: {{DATE}}
+updated: {{YYYY-MM-DD}}
 sources: []
 ---
 
