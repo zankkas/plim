@@ -28,6 +28,7 @@ None of these are model problems. They are missing-structure problems.
 | Navigation | `compass.md` | Where is everything, and what is authoritative? |
 | Continuity | `session-notes/` | What was decided, and why? |
 | Directives | `directives/` | What hard rules always apply? |
+| Decisions | `decisions/` | Why was this chosen? What reasoning must survive? |
 | Skills | `skills/` | How is a specific procedure run? |
 | Reference | `wiki/` | What is durably true? |
 
@@ -40,6 +41,12 @@ The directives that ship with the kit:
 - [Skill awareness](directives/skill-awareness-directive.md): when to reach for a skill instead of improvising.
 - [Spec location](directives/spec-location-directive.md): where specifications live and how to find them.
 - [Environment plumbing](directives/environment-plumbing-directive.md): how to fix the files jobs read, wire backends and credentials, and verify the primary instead of the fallback.
+
+The decisions that ship with the kit (ADRs, the reasoning behind the rules):
+
+- [Live status and static knowledge never merge](decisions/ADR-0001-live-status-and-static-knowledge-never-merge.md): the live tracker owns status, static files own knowledge, and the two never merge.
+- [Capture at the moment of decision](decisions/ADR-0002-capture-at-the-moment-of-decision.md): decisions are recorded when they happen; the close audits rather than reconstructs.
+- [Evals are the regression gate](decisions/ADR-0003-evals-are-the-regression-gate.md): every skill ships evals, and they run whenever the skill changes.
 
 ## The two truths
 
