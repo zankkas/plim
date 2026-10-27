@@ -64,6 +64,15 @@ class DirectiveContract(unittest.TestCase):
             self.assertIn(p.stem, corpus, f"directive {p.name} is never referenced")
 
 
+class IndexContract(unittest.TestCase):
+    """README.md is the entry point: every ADR and pattern must be reachable from it."""
+
+    def test_every_adr_and_pattern_is_referenced_in_readme(self):
+        readme = read(ROOT / "README.md")
+        for p in md_files("decisions", "patterns"):
+            self.assertIn(p.stem, readme, f"{p.relative_to(ROOT)} is never referenced in README.md")
+
+
 class LinkContract(unittest.TestCase):
     def test_relative_links_resolve(self):
         broken = []
