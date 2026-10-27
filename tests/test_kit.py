@@ -91,5 +91,16 @@ class HeadingContract(unittest.TestCase):
             self.assertEqual(len(h1), 1, f"{p.relative_to(ROOT)} has {len(h1)} H1 headings")
 
 
+
+class LayerTableContract(unittest.TestCase):
+    """README.md's layer table must name only paths the kit actually ships."""
+
+    def test_layer_table_paths_resolve(self):
+        readme = read(ROOT / "README.md")
+        paths = re.findall(r"^\|.*?\|\s*`([^`]+)`\s*\|", readme, re.M)
+        self.assertTrue(paths, "no paths found in README table rows")
+        missing = [p for p in paths if not (ROOT / p).exists()]
+        self.assertEqual(missing, [], "unresolvable paths in README: " + ", ".join(missing))
+
 if __name__ == "__main__":
     unittest.main()

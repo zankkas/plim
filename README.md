@@ -21,12 +21,14 @@ None of these are model problems. They are missing-structure problems.
 
 ## The layers
 
+Identity, profile, and compass are copied from `templates/` into the workspace root on adoption, and `session-notes/` is created on first close.
+
 | Layer | File | Question it answers |
 |---|---|---|
-| Identity | `SOUL.md` | Who is the agent? What voice, boundaries, and values? |
-| Human profile | `PROFILE.md` | Who is it working with? Strengths, pitfalls, working style? |
-| Navigation | `compass.md` | Where is everything, and what is authoritative? |
-| Continuity | `session-notes/` | What was decided, and why? |
+| Identity | `templates/SOUL.template.md` | Who is the agent? What voice, boundaries, and values? |
+| Human profile | `templates/PROFILE.template.md` | Who is it working with? Strengths, pitfalls, working style? |
+| Navigation | `templates/compass.template.md` | Where is everything, and what is authoritative? |
+| Continuity | `patterns/session-notes-protocol.md` | What was decided, and why? |
 | Directives | `directives/` | What hard rules always apply? |
 | Decisions | `decisions/` | Why was this chosen? What reasoning must survive? |
 | Skills | `skills/` | How is a specific procedure run? |
