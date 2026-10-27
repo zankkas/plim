@@ -39,6 +39,7 @@ The directives that ship with the kit:
 - [No documentation garbage](directives/no-documentation-garbage.md): what not to write down.
 - [Skill awareness](directives/skill-awareness-directive.md): when to reach for a skill instead of improvising.
 - [Spec location](directives/spec-location-directive.md): where specifications live and how to find them.
+- [Environment plumbing](directives/environment-plumbing-directive.md): how to fix the files jobs read, wire backends and credentials, and verify the primary instead of the fallback.
 
 ## The two truths
 

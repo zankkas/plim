@@ -15,7 +15,7 @@ description: >
 ### 1. Authority
 
 - [ ] The live tracker named in the boot adapter and compass is stated as the current authority.
-- [ ] All boot adapters (AGENTS.md, CLAUDE.md, and any runtime steering files) are identical thin adapters.
+- [ ] All boot adapters (AGENTS.md and any runtime steering files, incl. client-compat shims) are identical thin adapters.
 - [ ] The compass contains orientation, not a status table or queue.
 - [ ] Any legacy snapshot, generated board, or migration artifact is clearly marked as such.
 

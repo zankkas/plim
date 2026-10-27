@@ -11,7 +11,7 @@ Every code task follows this sequence. No step is skipped unless the task is tri
 
 1. **Read the spec.** Before writing code, read the blueprint/task fully. Understand WHAT to build, WHERE it goes, and HOW to verify it.
 
-2. **Consult the judgment layer, if one exists.** If your workspace runs a specialist or framework layer for engineering judgment, consult it for the task's domain and match the expert to the work:
+2. **Consult the judgment layer.** Workers run on Pi or Hermes (never Claude Code or Codex — runtime decision by the principal). The workspace's judgment layer is **Soma** (MCP: `soma_query`, `soma_get_persona`, `soma_framework_search`). Consult it for the task's domain and match the expert to the work:
    - Architecture/design decisions → the relevant design specialists
    - Testing strategy → the quality/testing specialist
    - Performance concerns → the performance specialist
