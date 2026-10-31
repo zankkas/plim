@@ -48,6 +48,13 @@ The decisions that ship with the kit (ADRs, the reasoning behind the rules):
 - [Capture at the moment of decision](decisions/ADR-0002-capture-at-the-moment-of-decision.md): decisions are recorded when they happen; the close audits rather than reconstructs.
 - [Evals are the regression gate](decisions/ADR-0003-evals-are-the-regression-gate.md): every skill ships evals, and they run whenever the skill changes.
 
+The skills that ship with the kit:
+
+- [Capture as you go](skills/capture-as-you-go/SKILL.md): record decisions, ideas, knowledge, and limitations the moment they happen.
+- [End of session](skills/end-of-session/SKILL.md): end a session with two exits and one light audit.
+- [Run evals](skills/run-evals/SKILL.md): run a skill's eval cases and report the verdict per case.
+- [Workspace hygiene](skills/workspace-hygiene/SKILL.md): audit the governance layer for drift, duplicate skills, stale adapters, and broken references.
+
 ## The two truths
 
 Two kinds of truth live in the workspace, and they must never merge:

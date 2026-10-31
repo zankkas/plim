@@ -73,6 +73,17 @@ class IndexContract(unittest.TestCase):
             self.assertIn(p.stem, readme, f"{p.relative_to(ROOT)} is never referenced in README.md")
 
 
+class SkillContract(unittest.TestCase):
+    """Every shipped skill is discoverable from README.md."""
+
+    def test_every_skill_is_referenced_in_readme(self):
+        readme = read(ROOT / "README.md")
+        skills = sorted(p.name for p in (ROOT / "skills").iterdir() if p.is_dir())
+        self.assertTrue(skills, "no skills found")
+        missing = [name for name in skills if name not in readme]
+        self.assertEqual(missing, [], "unreferenced skills: " + ", ".join(missing))
+
+
 class LinkContract(unittest.TestCase):
     def test_relative_links_resolve(self):
         broken = []
