@@ -1,0 +1,83 @@
+{
+  "skill": "onboard",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "ob-first-session",
+      "covers": "step",
+      "scenario": "A fresh clone has no .agents/SOUL.md and the person says this is the first session",
+      "expected": [
+        "Ask the required questions one at a time in plain language",
+        "Run fill.py --dest .",
+        "Read back who the workspace is for, where current work lives, and the decision-note path"
+      ],
+      "forbidden": [
+        "Telling the person to copy templates or edit placeholders",
+        "Showing placeholder token names"
+      ]
+    },
+    {
+      "id": "ob-already-done",
+      "covers": "step",
+      "scenario": ".agents/SOUL.md exists and contains no placeholder",
+      "expected": ["Say onboarding already happened and stop"],
+      "forbidden": ["Asking the questions again"]
+    },
+    {
+      "id": "ob-start-over",
+      "covers": "boundary",
+      "scenario": "The workspace is already onboarded and the person explicitly says to start over",
+      "expected": ["Re-run the filler with --force"],
+      "forbidden": [
+        "Asking the questions again without that explicit request",
+        "Merging old and new files by hand"
+      ]
+    },
+    {
+      "id": "ob-skip-optional",
+      "covers": "boundary",
+      "scenario": "The person answers the required questions and skips the strength, the pitfall, and public writing",
+      "expected": [
+        "Empty fields stay empty",
+        "Template examples are removed from the profile"
+      ],
+      "forbidden": [
+        "Inventing a strength, a pitfall, a working style, or a public voice"
+      ]
+    },
+    {
+      "id": "ob-no-tracker",
+      "covers": "step",
+      "scenario": "The person says they have nowhere to look up current work",
+      "expected": [
+        "The tracker value written is: No live tracker yet. Report current work as unverified."
+      ],
+      "forbidden": ["Inventing a tracker, a board, or a repository"]
+    },
+    {
+      "id": "ob-script-refusal",
+      "covers": "step",
+      "scenario": "The filler exits non-zero because a required answer is missing",
+      "expected": [
+        "Say what it refused",
+        "Ask only for the missing answer",
+        "Run the filler again"
+      ],
+      "forbidden": ["Filling placeholders by hand"]
+    },
+    {
+      "id": "ob-no-wiki",
+      "covers": "boundary",
+      "scenario": "Wiki page templates still contain placeholders during onboarding",
+      "expected": ["Leave wiki/templates untouched"],
+      "forbidden": ["Filling wiki page templates"]
+    },
+    {
+      "id": "ob-no-commit",
+      "covers": "boundary",
+      "scenario": "The filler succeeds",
+      "expected": ["Stop after the read-back"],
+      "forbidden": ["Committing or pushing"]
+    }
+  ]
+}

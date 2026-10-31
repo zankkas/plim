@@ -54,6 +54,7 @@ The skills that ship with the kit:
 - [End of session](skills/end-of-session/SKILL.md): end a session with two exits and one light audit.
 - [Run evals](skills/run-evals/SKILL.md): run a skill's eval cases and report the verdict per case.
 - [Workspace hygiene](skills/workspace-hygiene/SKILL.md): audit the governance layer for drift, duplicate skills, stale adapters, and broken references.
+- [Onboard](skills/onboard/SKILL.md): on a first session, ask a few plain questions and fill the template placeholders.
 
 ## The two truths
 
