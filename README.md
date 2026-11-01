@@ -36,6 +36,7 @@ None of these are model problems. They are missing-structure problems.
 | Skills | `skills/` | How is a specific procedure run? |
 | Reference | `wiki/` | What is durably true? |
 | Verification | `scripts/doctor.py` | Is the workspace still doing what it says? |
+| Gateway | `AGENTS.md` | What does an agent see when it opens the clone? |
 
 The agent reads identity, profile, and the compass at boot. It reads directives and skills only when relevant. It writes continuity and wiki during and after work.
 
@@ -52,6 +53,7 @@ The decisions that ship with the kit (ADRs, the reasoning behind the rules):
 - [Live status and static knowledge never merge](decisions/ADR-0001-live-status-and-static-knowledge-never-merge.md): the live tracker owns status, static files own knowledge, and the two never merge.
 - [Capture at the moment of decision](decisions/ADR-0002-capture-at-the-moment-of-decision.md): decisions are recorded when they happen; the close audits rather than reconstructs.
 - [Evals are the regression gate](decisions/ADR-0003-evals-are-the-regression-gate.md): every skill ships evals, and they run whenever the skill changes.
+- [The gateway is shipped, and onboarding consumes it](decisions/ADR-0004-gateway-is-shipped-and-onboarding-consumes-it.md): the clone boots into discoverable onboarding, and the filler never clobbers a boot file a human wrote.
 
 The skills that ship with the kit:
 
@@ -98,13 +100,9 @@ When the runtime supports hard guardrails, they sit underneath the hints: approv
 
 ## Quickstart
 
-1. Copy `templates/` into your workspace as `.agents/`.
-2. Fill the placeholders: agent name, human name, file paths, live tracker.
-3. Point the boot adapter (`AGENTS.md` or your runtime's equivalent) at the files.
-4. Create the session-notes file with its header block. See [patterns/session-notes-protocol.md](patterns/session-notes-protocol.md).
-5. Adopt the close-session skill first. It is the ritual that keeps the rest honest.
-6. Run `python3 scripts/doctor.py` and make it clean. Until it is, do not trust the workspace.
-7. Add directives and the wiki only when you feel the problem they solve.
+To start, clone the repo in a safe location, open your agent in that folder, and say **"plim, setup workspace"**. The agent follows the [onboard skill](skills/onboard/SKILL.md): it asks a few plain questions, fills the templates itself, and replaces the shipped [gateway](AGENTS.md) with your workspace adapter. Run [`scripts/doctor.py`](scripts/doctor.py) when it finishes — until it is clean, do not trust the workspace.
+
+Setting up by hand remains possible as a fallback: copy `templates/` into your workspace as `.agents/`, fill the placeholders, point the boot adapter at the files, create the session-notes file with its header block (see [patterns/session-notes-protocol.md](patterns/session-notes-protocol.md)), adopt the close-session skill first, and add directives and the wiki only when you feel the problem they solve.
 
 ## The patterns
 

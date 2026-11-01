@@ -165,6 +165,30 @@ class OnboardFiller(unittest.TestCase):
             self.assertEqual(forced.returncode, 0, forced.stderr)
             self.assertIn("Grace", (dest / ".agents" / "SOUL.md").read_text(encoding="utf-8"))
 
+    def test_gateway_is_consumed_and_own_boot_file_is_refused(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            dest = Path(tmp) / "ws"
+            dest.mkdir()
+            gateway = "# Plim\n\n<!-- plim:gateway — boot gateway -->\n"
+            (dest / "AGENTS.md").write_text(gateway, encoding="utf-8")
+            result = run(dest, required())
+            self.assertEqual(result.returncode, 0, result.stderr)
+            adapter = (dest / "AGENTS.md").read_text(encoding="utf-8")
+            self.assertNotIn("plim:gateway", adapter)
+            self.assertIn("GitHub issues in ada/lab", adapter)
+            self.assertIn("session-notes/lab.md", adapter)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            dest = Path(tmp) / "ws"
+            dest.mkdir()
+            (dest / "AGENTS.md").write_text("# My own boot file\n", encoding="utf-8")
+            refused = run(dest, required())
+            self.assertEqual(refused.returncode, 2, refused.stderr)
+            self.assertIn("not the shipped gateway", refused.stderr)
+            self.assertFalse((dest / ".agents" / "SOUL.md").exists())
+            self.assertEqual((dest / "AGENTS.md").read_text(encoding="utf-8"),
+                             "# My own boot file\n")
+
     def test_unsafe_domain_and_path_are_refused(self):
         with tempfile.TemporaryDirectory() as tmp:
             dest = Path(tmp) / "ws"

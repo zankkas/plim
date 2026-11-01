@@ -38,6 +38,7 @@ TEXT_FIELDS = (
 )
 DOMAIN_RE = re.compile(r"^[a-z][a-z0-9-]{0,31}$")
 PATH_RE = re.compile(r"^[A-Za-z0-9_./-]{1,80}$")
+GATEWAY_MARKER = "<!-- plim:gateway"
 EXAMPLE_RE = re.compile(r"<!-- Example \(delete\):.*?-->\n?", re.S)
 
 TRAIT_LINE = "- **{{TRAIT}}**: {{how it shows up and what the agent should do about it}}\n"
@@ -250,11 +251,24 @@ def write_under(dest: Path, relative: str, text: str) -> None:
     print(f"wrote {relative}")
 
 
+def gateway_conflict(dest: Path) -> bool:
+    """True when a root AGENTS.md exists but is not the shipped gateway —
+    written by a human, so the filler must not clobber it."""
+    adapter = dest / "AGENTS.md"
+    return adapter.is_file() and GATEWAY_MARKER not in adapter.read_text(encoding="utf-8")
+
+
 def fill(dest: Path, answers: dict, when: str, force: bool) -> None:
     if already_onboarded(dest) and not force:
         raise FillError(
             3,
             "this workspace is already onboarded; pass --force only to start over",
+        )
+    if gateway_conflict(dest) and not force:
+        raise FillError(
+            2,
+            "AGENTS.md exists and is not the shipped gateway (no plim:gateway marker); "
+            "move it aside by hand, then run again",
         )
     files = {
         "AGENTS.md": render_adapter(answers),
