@@ -1,10 +1,14 @@
-# Symbiotic Workspace
+# Plim
 
-*A way of working for humans and agents.*
+*Governance for agent workspaces.*
 
-An agent workspace needs governance the way a team needs a charter and rituals. Agents are capable and stateless. Every session starts blank. Without written rules, each session invents its own habits, builds duplicate trackers, and drifts. This kit is a set of working artifacts that stop that drift.
+**Plim** is a kit of working artifacts that keep an agent team from inventing its own habits every session.
 
-It is extracted from a live agent workspace that ran daily across multiple projects. The artifacts here are generic. Copy them, fill the placeholders, and adapt them to your own agent and projects.
+An agent workspace needs governance the way a team needs a charter and rituals. Agents are capable and stateless. Every session starts blank. Without written rules, each session invents its own habits, builds duplicate trackers, and drifts. This kit is what stops that drift.
+
+It was extracted from a live agent workspace that has run daily across multiple projects. Nothing here was designed in the abstract. The artifacts are generic. Copy them, fill the placeholders, and adapt them to your own agent and projects.
+
+Three things make it more than a set of templates. The rules carry their reasons, in ADRs. The procedures carry eval cases, so a rule that stops working is caught rather than assumed. And live status never merges with written knowledge, so the kit cannot quietly become a stale tracker of itself.
 
 ## The problem it solves
 
