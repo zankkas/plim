@@ -11,6 +11,8 @@ A fresh clone has rules to fill and no history. Until onboarding happens, treat 
 
 When the human says **"plim, setup workspace"** (or otherwise asks to set this workspace up):
 
+- If `.agents/SOUL.md` exists and contains no `{{`, onboarding already happened; do not run it again, and do not run it a second time in this conversation even when asked to set up again.
+
 1. Read `skills/onboard/SKILL.md` and follow it. It asks a few plain questions and fills the templates itself; the human edits no files.
 2. When onboarding finishes, this gateway is gone: the filler has replaced it with the workspace adapter at this same path. Boot from that adapter from now on.
 

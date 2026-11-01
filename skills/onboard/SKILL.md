@@ -29,7 +29,7 @@ description: >
 4. **If the answer is that there is no live tracker,** write this value and no other: `No live tracker yet. Report current work as unverified.` Do not invent a tracker, a board, or a repository.
 5. **Run the filler.** Write the answers to a JSON file using the field names from `python3 skills/onboard/fill.py --help`, then run `python3 skills/onboard/fill.py --dest . --answers <file>` from the repo root. Do not edit files under `templates/` or `wiki/templates/`. Do not fill wiki page templates. Do not fill placeholders by hand. Do not commit or push.
 6. **If the filler exits non-zero,** say what it refused and ask only for the missing answer. Then run it again.
-7. **Read the result back in a few lines:** who the workspace is for, where current work lives, and the path of the decision note. Stop when the person has nothing to correct.
+7. **Read the result back in a few lines:** who the workspace is for, where current work lives, and the path of the decision note. Run `python3 scripts/doctor.py` and read its verdict in one line. If it reports findings, show them and stop without claiming onboarding is done.
 
 ## Non-goals
 
@@ -38,4 +38,4 @@ description: >
 
 ## Completion criterion
 
-`.agents/SOUL.md`, `.agents/PROFILE.md`, `.agents/compass.md`, the root `AGENTS.md`, and `.agents/session-notes/<domain>.md` exist. None of them contain `{{`. The profile does not contain the template examples. The person heard the read-back.
+`.agents/SOUL.md`, `.agents/PROFILE.md`, `.agents/compass.md`, the root `AGENTS.md`, and `.agents/session-notes/<domain>.md` exist. None of them contain `{{`. The profile does not contain the template examples. The person heard the read-back, and the doctor's verdict was read back too.

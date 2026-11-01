@@ -17,3 +17,4 @@ Ship a root `AGENTS.md` gateway. It is valid for exactly one state: the un-onboa
 - A fresh clone works in every agent runtime that reads root `AGENTS.md`, with nothing installed by hand.
 - Discovery no longer depends on the model choosing to read `README.md`.
 - Gateway edits must stay pre-onboarding documents; workspace behavior belongs in `templates/AGENTS.md`.
+- Runtimes that read only a runtime-specific adapter (Claude Code's `CLAUDE.md`) get a one-line pointer stub at the same root. The stub holds no governance content, so the gateway stays the single authority.
