@@ -8,7 +8,7 @@ An agent workspace needs governance the way a team needs a charter and rituals. 
 
 It was extracted from a live agent workspace that has run daily across multiple projects. Nothing here was designed in the abstract. The artifacts are generic. Copy them, fill the placeholders, and adapt them to your own agent and projects.
 
-Three things make it more than a set of templates. The rules carry their reasons, in ADRs. The procedures carry eval cases, so a rule that stops working is caught rather than assumed. And live status never merges with written knowledge, so the kit cannot quietly become a stale tracker of itself.
+Four things make it more than a set of templates. The rules carry their reasons, in ADRs. The procedures carry eval cases, so a rule that stops working is caught rather than assumed. Live status never merges with written knowledge. And a doctor script checks all of it, so the claim is verifiable instead of aspirational.
 
 ## The problem it solves
 
@@ -35,6 +35,7 @@ None of these are model problems. They are missing-structure problems.
 | Decisions | `decisions/` | Why was this chosen? What reasoning must survive? |
 | Skills | `skills/` | How is a specific procedure run? |
 | Reference | `wiki/` | What is durably true? |
+| Verification | `scripts/doctor.py` | Is the workspace still doing what it says? |
 
 The agent reads identity, profile, and the compass at boot. It reads directives and skills only when relevant. It writes continuity and wiki during and after work.
 
@@ -60,14 +61,17 @@ The skills that ship with the kit:
 - [Workspace hygiene](skills/workspace-hygiene/SKILL.md): audit the governance layer for drift, duplicate skills, stale adapters, and broken references.
 - [Onboard](skills/onboard/SKILL.md): on a first session, ask a few plain questions and fill the template placeholders.
 
-## The two truths
+## The three truths
 
-Two kinds of truth live in the workspace, and they must never merge:
+Three kinds of truth live in the workspace, and they must never merge:
 
 1. **The live tracker holds current status.** Issues, boards, or whatever live system you use. It is the only authority on what is active now.
 2. **The static files hold orientation and knowledge.** The compass maps the workspace. The wiki holds verified facts. Session notes record decisions.
+3. **The conversation is not the record.** Chat is where decisions get made. The tracker and the notes are where they survive. A decision that exists only in a chat thread is already lost, because the next session cannot read it and nobody scrolls back.
 
 The rule: never mirror live status into static files. When the live system is unreachable, report state as unverified. Never reconstruct it from memory or local caches. A static copy of status becomes a second, lying authority within days. See [patterns/two-truths-split.md](patterns/two-truths-split.md).
+
+The same rule applies to the channel. Talking about a decision is not recording it, however clear the conversation felt at the time.
 
 ## The division of labor
 
@@ -97,7 +101,8 @@ When the runtime supports hard guardrails, they sit underneath the hints: approv
 3. Point the boot adapter (`AGENTS.md` or your runtime's equivalent) at the files.
 4. Create the session-notes file with its header block. See [patterns/session-notes-protocol.md](patterns/session-notes-protocol.md).
 5. Adopt the end-of-session skill first. It is the ritual that keeps the rest honest.
-6. Add directives and the wiki only when you feel the problem they solve.
+6. Run `python3 scripts/doctor.py` and make it clean. Until it is, do not trust the workspace.
+7. Add directives and the wiki only when you feel the problem they solve.
 
 ## The patterns
 

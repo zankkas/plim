@@ -8,8 +8,11 @@ A skill is a procedure an agent loads when it becomes relevant. The skill must e
 skills/{{skill-name}}/
 ├── SKILL.md          # the entry point: trigger, why, steps. One screen.
 ├── references/       # depth on demand: examples, tables, long detail
-└── evals/            # the cases that prove the skill still works
+├── evals/            # the cases that prove the skill still works
+└── scripts/, templates/   # only when the procedure needs them
 ```
+
+One shape, no exceptions. No loose files at the skills root, no skill nested inside a skill. A layout that drifts is a layout nobody can check, and the doctor in `scripts/doctor.py` fails on both.
 
 ## SKILL.md: the center
 
@@ -22,6 +25,16 @@ The file the agent actually reads. It carries:
 - **Completion criterion**: how the agent knows it is done.
 
 Everything else moves to `references/`. A skill that needs ten screens to start is two skills, or one skill and a reference.
+
+### The description budget
+
+The description is the only part of a skill that is always resident. Every session pays for it, whether or not the skill loads.
+
+- **Keep it under ~260 bytes**, and spend the budget on triggers rather than on rationale.
+- Triggers are what make the loader choose correctly. Rationale belongs in the body, where it costs nothing until the skill is loaded.
+- One skill should not claim a phrase another skill already uses: whichever loads first wins, and the outcome is a coin flip nobody notices.
+
+A description that grows into a paragraph is a description that will be paid for forever.
 
 ## references/: depth on demand
 

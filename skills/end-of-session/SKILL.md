@@ -49,6 +49,7 @@ The exit takes minutes. Deep pruning and wiki distillation belong to scheduled h
 - No end-of-day narrative synthesis.
 - No commits, pushes, merges, or deploys without an explicit user request.
 - No research or deep pruning at exit time.
+- No default handoff file. A bridge that becomes a new file every close is a second source of truth wearing a different name. Write one only when the next session genuinely cannot read the tracker, and say why.
 
 ## Completion criterion
 
