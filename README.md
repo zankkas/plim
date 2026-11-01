@@ -114,6 +114,7 @@ Read them when the problem they solve shows up in your workspace:
 - [GitHub as the workspace](patterns/github-as-the-workspace.md): using the repo as knowledge layer and governance layer, not just code hosting.
 - [Multi-intelligence review](patterns/multi-intelligence-review.md): checkpoint sweeps and parallel panels of other intelligences, to close gaps the primary conversation cannot see.
 - [The agent definition stack](patterns/agent-definition-stack.md): how the kit instantiates agents, from character to schedule.
+- [The clone ritual](patterns/the-clone-ritual.md): gateway, pointer, and trigger phrase — how any repo becomes clone-it-and-tell-your-agent, whatever the topic.
 
 ## What this is not
 
