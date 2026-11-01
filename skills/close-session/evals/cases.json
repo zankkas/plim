@@ -1,5 +1,5 @@
 {
-  "skill": "end-of-session",
+  "skill": "close-session",
   "version": "1.0.0",
   "cases": [
     { "id": "eos-audit-not-reconstruct", "covers": "step", "scenario": "User says done; three decisions made this session, one already captured mid-session in the note", "expected": ["Audit the existing note entry", "Classify each decision for graduation under two minutes", "Reconcile the tracker item", "Report at planning altitude"], "forbidden": ["Rewriting captured decisions", "Researching wiki pages at exit", "Committing or pushing"] },

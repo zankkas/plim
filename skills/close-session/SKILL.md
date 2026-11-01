@@ -1,12 +1,12 @@
 ---
-name: end-of-session
+name: close-session
 description: >
   End a session the right way: two exits, one light audit. Use when the user
   says done, close the session, end here, or asks for a handoff. Decisions
   were captured as they happened; the exit verifies, it does not reconstruct.
 ---
 
-# End of Session
+# Session Close
 
 **Why:** Sessions are ephemeral. Decisions and next moves must outlive them. Because capture happens continuously during the session, the exit stays light: it audits what is already written instead of rebuilding it from memory.
 

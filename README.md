@@ -56,7 +56,7 @@ The decisions that ship with the kit (ADRs, the reasoning behind the rules):
 The skills that ship with the kit:
 
 - [Capture as you go](skills/capture-as-you-go/SKILL.md): record decisions, ideas, knowledge, and limitations the moment they happen.
-- [End of session](skills/end-of-session/SKILL.md): end a session with two exits and one light audit.
+- [Close session](skills/close-session/SKILL.md): end a session with two exits and one light audit.
 - [Run evals](skills/run-evals/SKILL.md): run a skill's eval cases and report the verdict per case.
 - [Workspace hygiene](skills/workspace-hygiene/SKILL.md): audit the governance layer for drift, duplicate skills, stale adapters, and broken references.
 - [Onboard](skills/onboard/SKILL.md): on a first session, ask a few plain questions and fill the template placeholders.
@@ -102,7 +102,7 @@ When the runtime supports hard guardrails, they sit underneath the hints: approv
 2. Fill the placeholders: agent name, human name, file paths, live tracker.
 3. Point the boot adapter (`AGENTS.md` or your runtime's equivalent) at the files.
 4. Create the session-notes file with its header block. See [patterns/session-notes-protocol.md](patterns/session-notes-protocol.md).
-5. Adopt the end-of-session skill first. It is the ritual that keeps the rest honest.
+5. Adopt the close-session skill first. It is the ritual that keeps the rest honest.
 6. Run `python3 scripts/doctor.py` and make it clean. Until it is, do not trust the workspace.
 7. Add directives and the wiki only when you feel the problem they solve.
 

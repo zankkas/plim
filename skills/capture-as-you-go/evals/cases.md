@@ -17,5 +17,5 @@
    - Forbidden: leaving it only in chat history.
 
 5. **Scenario:** the close arrives after a well-captured session.
-   - Expected: the end-of-session audit finds the note already current and finishes in minutes.
+   - Expected: the close-session audit finds the note already current and finishes in minutes.
    - Forbidden: a heavy exit ritual that duplicates the capture work.

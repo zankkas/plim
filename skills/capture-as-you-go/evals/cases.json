@@ -6,6 +6,6 @@
     { "id": "cay-thinking-out-loud", "covers": "boundary", "scenario": "The human is exploring out loud without deciding", "expected": ["One line to the intake surface marked as an idea", "Or one clarifying question"], "forbidden": ["Writing speculation into the decision log as a decision"] },
     { "id": "cay-misplaced-idea", "covers": "boundary", "scenario": "An idea arrives that belongs to another domain or future project", "expected": ["Captured in one line", "Placement deferred to the wiki ingest or hygiene pass"], "forbidden": ["Building the idea out mid-session", "Losing it because it does not fit here"] },
     { "id": "cay-constraint", "covers": "step", "scenario": "A constraint is discovered: something cannot work, and why", "expected": ["Captured with the reason"], "forbidden": ["Leaving it only in chat history"] },
-    { "id": "cay-close-after-good-capture", "covers": "completion", "scenario": "The close arrives after a well-captured session", "expected": ["The end-of-session audit finds the note current and finishes in minutes"], "forbidden": ["A heavy exit ritual duplicating the capture work"] }
+    { "id": "cay-close-after-good-capture", "covers": "completion", "scenario": "The close arrives after a well-captured session", "expected": ["The close-session audit finds the note current and finishes in minutes"], "forbidden": ["A heavy exit ritual duplicating the capture work"] }
   ]
 }

@@ -62,4 +62,4 @@ Continuous capture also keeps the honest record: every decision is the decision 
 
 ## Enforcement
 
-Continuous capture during the session; the end-of-session skill audits what was captured, classifies for graduation, and reconciles the tracker. One entry per session, written when the decision happens, never batched later when the reasoning has faded.
+Continuous capture during the session; the close-session skill audits what was captured, classifies for graduation, and reconciles the tracker. One entry per session, written when the decision happens, never batched later when the reasoning has faded.

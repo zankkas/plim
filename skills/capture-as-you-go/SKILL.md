@@ -2,7 +2,7 @@
 name: capture-as-you-go
 description: >
   Record decisions, ideas, knowledge, and limitations the moment they happen
-  during the session. Use continuously; the end-of-session skill audits what
+  during the session. Use continuously; the close-session skill audits what
   this captured instead of reconstructing it.
 ---
 

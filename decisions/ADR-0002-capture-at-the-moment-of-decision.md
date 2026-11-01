@@ -9,7 +9,7 @@ The alternative design batched all recording into the session-close ritual. It m
 
 ## Decision
 
-Decisions, ideas, limitations, and verified knowledge are captured the moment they happen, in a few lines, by the capture-as-you-go skill. The end-of-session skill audits what was captured, classifies for graduation, and reconciles the tracker. The close never reconstructs from memory what capture could have caught live.
+Decisions, ideas, limitations, and verified knowledge are captured the moment they happen, in a few lines, by the capture-as-you-go skill. The close-session skill audits what was captured, classifies for graduation, and reconciles the tracker. The close never reconstructs from memory what capture could have caught live.
 
 ## Consequences
 
