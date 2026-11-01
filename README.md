@@ -88,6 +88,8 @@ Boot is a thin adapter, not a data dump.
 
 The adapter stays tiny. It changes only when the map changes. All real content lives one hop away, in files the agent can also read mid-session. Keep the adapter and its targets identical across every client that boots into the workspace.
 
+Boot is also a cost decision. Fetch the live status once, in one composed call, and reuse it for the session. Re-querying the tracker on every turn burns context and returns the same answer twice.
+
 ## What holds the agent mid-session
 
 Boot files stay in context for the whole session. Skill descriptions stay resident too: one line each, saying what the procedure is for and when to load it. The full procedure loads only when relevant. That is the hint layer: a permanent index of small pointers, not a permanent pile of full text.
