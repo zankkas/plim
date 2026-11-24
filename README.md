@@ -2,127 +2,119 @@
 
 *Governance for agent workspaces.*
 
-**Plim** is a kit of working artifacts that keep an agent team from inventing its own habits every session.
+Plim is a small kit of files that gives an AI agent written rules, memory, and
+one source of truth for status — so no session starts by inventing its own
+habits. It was extracted from a workspace that has run daily across several
+projects. The artifacts are generic: copy them, fill the placeholders, adapt
+them to your agent and your projects.
 
-An agent workspace needs governance the way a team needs a charter and rituals. Agents are capable and stateless. Every session starts blank. Without written rules, each session invents its own habits, builds duplicate trackers, and drifts. This kit is what stops that drift.
+## The problem
 
-It was extracted from a live agent workspace that has run daily across multiple projects. Nothing here was designed in the abstract. The artifacts are generic. Copy them, fill the placeholders, and adapt them to your own agent and projects.
-
-Four things make it more than a set of templates. The rules carry their reasons, in ADRs. The procedures carry eval cases, so a rule that stops working is caught rather than assumed. Live status never merges with written knowledge. And a doctor script checks all of it, so the claim is verifiable instead of aspirational.
-
-## The problem it solves
-
-An agent with no governance layer fails in predictable ways:
+An agent with no governance layer fails in the same six ways:
 
 - It reconstructs current status from memory and gets it wrong.
-- It copies status into static files, which then contradict the live source of truth.
+- It copies status into static files, which then contradict the live source.
 - It creates a new document instead of updating the existing one.
-- It forgets decisions between sessions because nothing records them.
+- It forgets decisions between sessions because nothing recorded them.
 - It loads every procedure into context instead of the relevant ones.
-- It applies its own engineering judgment where the workspace has a designated authority.
+- It applies its own judgment where the workspace named an authority.
 
 None of these are model problems. They are missing-structure problems.
 
-## The layers
+## Start
 
-| Layer | File | Question it answers |
-|---|---|---|
-| Identity | `SOUL.md` | Who is the agent? What voice, boundaries, and values? |
-| Human profile | `PROFILE.md` | Who is it working with? Strengths, pitfalls, working style? |
-| Navigation | `compass.md` | Where is everything, and what is authoritative? |
-| Continuity | `session-notes/` | What was decided, and why? |
-| Directives | `directives/` | What hard rules always apply? |
-| Decisions | `decisions/` | Why was this chosen? What reasoning must survive? |
-| Skills | `skills/` | How is a specific procedure run? |
-| Reference | `wiki/` | What is durably true? |
-| Verification | `scripts/doctor.py` | Is the workspace still doing what it says? |
-| Gateway | `AGENTS.md` | What does an agent see when it opens the clone? |
+Paste this link into your agent:
 
-The agent reads identity, profile, and the compass at boot. It reads directives and skills only when relevant. It writes continuity and wiki during and after work.
+**https://github.com/zankkas/plim/blob/main/SETUP.md** ([same file here](SETUP.md))
 
-The directives that ship with the kit:
+It clones the kit, runs the setup interview, and finishes by running the
+doctor. Nothing else to read first.
 
-- [Agent execution](directives/agent-execution-directive.md): how an agent executes work, from receiving a task to delivering results.
-- [No documentation garbage](directives/no-documentation-garbage.md): what not to write down.
-- [Skill awareness](directives/skill-awareness-directive.md): when to reach for a skill instead of improvising.
-- [Spec location](directives/spec-location-directive.md): where specifications live and how to find them.
-- [Environment plumbing](directives/environment-plumbing-directive.md): how to fix the files jobs read, wire backends and credentials, and verify the primary instead of the fallback.
+Or do it yourself: clone the repo, open your agent in that folder, and say
+**"plim, setup workspace"**. Either way, the doctor decides whether the result
+is sound:
 
-The decisions that ship with the kit (ADRs, the reasoning behind the rules):
+```console
+$ python3 scripts/doctor.py
+  skills: clean
+  budget: clean
+  evals: clean
+  links: clean
+  mirrors: clean
 
-- [Live status and static knowledge never merge](decisions/ADR-0001-live-status-and-static-knowledge-never-merge.md): the live tracker owns status, static files own knowledge, and the two never merge.
-- [Capture at the moment of decision](decisions/ADR-0002-capture-at-the-moment-of-decision.md): decisions are recorded when they happen; the close audits rather than reconstructs.
-- [Evals are the regression gate](decisions/ADR-0003-evals-are-the-regression-gate.md): every skill ships evals, and they run whenever the skill changes.
-- [The gateway is shipped, and onboarding consumes it](decisions/ADR-0004-gateway-is-shipped-and-onboarding-consumes-it.md): the clone boots into discoverable onboarding, and the filler never clobbers a boot file a human wrote.
+no drift found.
+```
 
-The skills that ship with the kit:
+Until it prints `no drift found`, do not trust the workspace.
 
-- [Capture as you go](skills/capture-as-you-go/SKILL.md): record decisions, ideas, knowledge, and limitations the moment they happen.
-- [Close session](skills/close-session/SKILL.md): end a session with two exits and one light audit.
-- [Run evals](skills/run-evals/SKILL.md): run a skill's eval cases and report the verdict per case.
-- [Workspace hygiene](skills/workspace-hygiene/SKILL.md): audit the governance layer for drift, duplicate skills, stale adapters, and broken references.
-- [Onboard](skills/onboard/SKILL.md): on a first session, ask a few plain questions and fill the template placeholders.
+## What you get
 
-## The three truths
+| Piece | What it is |
+|---|---|
+| `AGENTS.md` | the gateway a fresh clone boots into; onboarding replaces it with your adapter |
+| `templates/` | SOUL, PROFILE, compass and boot adapter, with placeholders |
+| `skills/` | five procedures: onboard, capture-as-you-go, close-session, run-evals, workspace-hygiene |
+| `directives/` | five always-on rules: agent-execution-directive, no-documentation-garbage, skill-awareness-directive, spec-location-directive, environment-plumbing-directive |
+| `scripts/doctor.py` | the check above |
+| `tests/` | contract tests for the kit's own promises |
 
-Three kinds of truth live in the workspace, and they must never merge:
+## Why believe it
 
-1. **The live tracker holds current status.** Issues, boards, or whatever live system you use. It is the only authority on what is active now.
-2. **The static files hold orientation and knowledge.** The compass maps the workspace. The wiki holds verified facts. Session notes record decisions.
-3. **The conversation is not the record.** Chat is where decisions get made. The tracker and the notes are where they survive. A decision that exists only in a chat thread is already lost, because the next session cannot read it and nobody scrolls back.
+The claims are checkable, and that is the whole design:
 
-The rule: never mirror live status into static files. When the live system is unreachable, report state as unverified. Never reconstruct it from memory or local caches. A static copy of status becomes a second, lying authority within days. See [patterns/two-truths-split.md](patterns/two-truths-split.md).
+- **The doctor checks five things** — skill shape, description budget, eval
+  cases, relative links, and status mirrors — and exits non-zero on drift.
+  It does not check ADRs, session notes, the wiki, or your judgment. It checks
+  the layer it was written for.
+- **Evals gate every skill.** A skill edit without a recorded eval pass does not
+  ship (ADR-0003).
+- **`tests/` checks the kit's own contracts**: ADR format, wiki frontmatter, one
+  H1 per template, every relative link resolves, every skill and ADR reachable
+  from this file.
 
-The same rule applies to the channel. Talking about a decision is not recording it, however clear the conversation felt at the time.
+## The one rule
 
-## The division of labor
+Live status and written knowledge never merge. The tracker (issues, board,
+whatever live system you use) owns what is active now. The files own
+orientation, knowledge, and decisions. When the tracker is unreachable, report
+state as **unverified** — never reconstruct it from memory or a local copy. A
+static copy of status becomes a second, lying authority within days.
 
-The kit exists for a symbiosis, not for delegation. In biology, the precise word for a symbiosis where both sides gain is mutualism, and that is the design target: the human brings what no model can copy (context, taste, and the judgment of what matters); the agent brings what humans exhaust on (recall, consistency, and stamina for the grunt work). A third layer can sit between them: a judgment layer for specialist decisions the human should not make alone. Route those through it and act on its grounded recommendation. Skip cleanly if you run none.
+A conversation is not the record either. A decision that exists only in a chat
+thread is lost, because the next session cannot read it.
 
-The split only works when it is written down. Both sides need to know what they own. The SOUL template carries the decision routing. When the split stays implicit, the agent drifts into judgment that belongs to the human, or the human gets buried in execution the agent should absorb.
+See `patterns/two-truths-split.md` and ADR-0001.
 
-## The boot protocol (two hops)
+## A session
 
-Boot is a thin adapter, not a data dump.
+1. **Boot.** The agent reads the adapter, identity, profile, and compass, then
+   fetches live status once and reuses it.
+2. **Work.** It loads the one relevant skill instead of every procedure.
+3. **Capture.** A decision is written down when it happens, not reconstructed
+   at the end.
+4. **Close.** It audits what capture recorded and leaves one handoff.
 
-1. **First hop:** the agent reads the adapter file (`AGENTS.md` at the repo root, or your runtime's equivalent). It points at the identity, profile, and compass files and at the live status source.
-2. **Second hop:** the agent reads those files, then renders a short brief: decisions needed, ready work, blocked work, unverified state.
+## What it is not
 
-The adapter stays tiny. It changes only when the map changes. All real content lives one hop away, in files the agent can also read mid-session. Keep the adapter and its targets identical across every client that boots into the workspace.
+- Not a framework you install and forget. It decays without hygiene; run the
+  workspace-hygiene skill weekly.
+- Not a task manager. Status lives in your tracker.
+- Not a memory system. Session notes record decisions, not conversation.
+- Not a product. It is a set of files that earn their keep by being read.
 
-Boot is also a cost decision. Fetch the live status once, in one composed call, and reuse it for the session. Re-querying the tracker on every turn burns context and returns the same answer twice.
+## The manual
 
-## What holds the agent mid-session
+The reasoning is one click away, starting at [docs/index.md](docs/index.md).
 
-Boot files stay in context for the whole session. Skill descriptions stay resident too: one line each, saying what the procedure is for and when to load it. The full procedure loads only when relevant. That is the hint layer: a permanent index of small pointers, not a permanent pile of full text.
-
-When the runtime supports hard guardrails, they sit underneath the hints: approve-or-deny rules that no prompt can bypass. Hints shape judgment. Guardrails bound action.
-
-## Quickstart
-
-To start, clone the repo in a safe location, open your agent in that folder, and say **"plim, setup workspace"**. The agent follows the [onboard skill](skills/onboard/SKILL.md): it asks a few plain questions, fills the templates itself, and replaces the shipped [gateway](AGENTS.md) with your workspace adapter. Run [`scripts/doctor.py`](scripts/doctor.py) when it finishes — until it is clean, do not trust the workspace.
-
-Setting up by hand remains possible as a fallback: copy `templates/` into your workspace as `.agents/`, fill the placeholders, point the boot adapter at the files, create the session-notes file with its header block (see [patterns/session-notes-protocol.md](patterns/session-notes-protocol.md)), adopt the close-session skill first, and add directives and the wiki only when you feel the problem they solve.
-
-## The patterns
-
-Read them when the problem they solve shows up in your workspace:
-
-- [Session-notes protocol](patterns/session-notes-protocol.md): the decision log, its graduation rule, and capture as you go.
-- [The two-truths split](patterns/two-truths-split.md): live status versus static knowledge.
-- [Skill anatomy](patterns/skill-anatomy.md): how to build skills that stay loadable, with references and evals.
-- [GitHub as the workspace](patterns/github-as-the-workspace.md): using the repo as knowledge layer and governance layer, not just code hosting.
-- [Multi-intelligence review](patterns/multi-intelligence-review.md): checkpoint sweeps and parallel panels of other intelligences, to close gaps the primary conversation cannot see.
-- [The agent definition stack](patterns/agent-definition-stack.md): how the kit instantiates agents, from character to schedule.
-- [The clone ritual](patterns/the-clone-ritual.md): gateway, pointer, and trigger phrase — how any repo becomes clone-it-and-tell-your-agent, whatever the topic.
-
-## What this is not
-
-- It is not a framework you install and forget. It decays without hygiene rituals. Run the workspace-hygiene skill weekly.
-- It is not a task manager. Status lives in your tracker, not here.
-- It is not a memory system. Session notes record decisions, not conversation history.
-- It is not a product. It is a set of files that earn their keep by being read and maintained.
+- **ADRs:** [ADR-0001](decisions/ADR-0001-live-status-and-static-knowledge-never-merge.md)
+  live status and static knowledge never merge · [ADR-0002](decisions/ADR-0002-capture-at-the-moment-of-decision.md)
+  capture at the moment of decision · [ADR-0003](decisions/ADR-0003-evals-are-the-regression-gate.md)
+  evals are the regression gate · [ADR-0004](decisions/ADR-0004-gateway-is-shipped-and-onboarding-consumes-it.md)
+  the gateway is shipped, and onboarding consumes it.
+- **Patterns:** session-notes-protocol · two-truths-split · skill-anatomy ·
+  github-as-the-workspace · multi-intelligence-review · agent-definition-stack ·
+  the-clone-ritual.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. See `LICENSE`.
