@@ -48,7 +48,7 @@ This is a static orientation guide, not a work tracker. It must not duplicate cu
 - The live tracker is the only source of current status. Keep issue state distinct from project status.
 - Keep strategy (why and where) separate from operational status (what is active now).
 - Record durable decisions in `.agents/session-notes/{domain}.md` at natural milestones, newest first.
-- For reference questions, query `wiki/` starting from `wiki/index.md` before re-reading raw documents.
+- For reference questions, read `wiki/index.md` and the page it names before re-reading a raw source. If there is no page, say so and offer to ingest it; never answer from memory.
 - Route specialist judgment through your judgment layer if one exists (see SOUL §7). Vision and priority questions go to the human directly.
 - Do not expose `.agents/` private context or private paths in public-facing output.
 

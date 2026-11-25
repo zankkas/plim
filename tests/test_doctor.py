@@ -93,5 +93,60 @@ class DoctorFindsDrift(unittest.TestCase):
         self.assertTrue(any("status mirror" in f for f in doctor.check_mirrors(self.root)))
 
 
+PAGE_FRONTMATTER = (
+    "---\ndomain: test\ntype: entity\nupdated: 2026-11-25\nsources: []\n---\n\n# A page\n"
+)
+
+
+def make_wiki(root: Path, files: dict[str, str]) -> Path:
+    wiki = root / "wiki"
+    wiki.mkdir(parents=True, exist_ok=True)
+    for name, content in files.items():
+        target = wiki / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(content)
+    return wiki
+
+
+class DoctorChecksTheWiki(unittest.TestCase):
+    """The wiki is the reference layer; an unreadable or unfiled page is drift."""
+
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self._tmp.name)
+        make_workspace(self.root, {"demo": GOOD_SKILL})
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def test_no_wiki_is_not_drift(self):
+        self.assertEqual(doctor.check_wiki(self.root), [])
+
+    def test_clean_wiki_passes(self):
+        make_wiki(self.root, {
+            "index.md": "- [A page](entities/a-page.md)\n",
+            "entities/a-page.md": PAGE_FRONTMATTER,
+        })
+        self.assertEqual(doctor.check_wiki(self.root), [])
+
+    def test_index_entry_pointing_nowhere(self):
+        make_wiki(self.root, {"index.md": "- [Gone](entities/gone.md)\n"})
+        self.assertTrue(any("does not exist" in f for f in doctor.check_wiki(self.root)))
+
+    def test_page_without_frontmatter(self):
+        make_wiki(self.root, {"entities/bare.md": "# Bare\n"})
+        self.assertTrue(any("no frontmatter" in f for f in doctor.check_wiki(self.root)))
+
+    def test_page_missing_a_key(self):
+        make_wiki(self.root, {"entities/half.md": "---\ndomain: test\ntype: entity\n---\n\n# Half\n"})
+        findings = doctor.check_wiki(self.root)
+        self.assertTrue(any("updated" in f and "sources" in f for f in findings), findings)
+
+    def test_templates_are_exempt(self):
+        make_wiki(self.root, {"templates/page.md": "# {{PAGE}}\n"})
+        self.assertEqual(doctor.check_wiki(self.root), [])
+
+
+
 if __name__ == "__main__":
     unittest.main()

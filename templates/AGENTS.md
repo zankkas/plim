@@ -23,6 +23,10 @@ This workspace is governed by `.agents/SOUL.md`, `.agents/PROFILE.md`, and `.age
 
 Read only the relevant files in `.agents/directives/` and `.agents/skills/` before acting. Do not preload every procedure into the chat.
 
+## Reference questions
+
+Before answering how the workspace, a tool, or a past decision works, read `wiki/index.md` and the page it points at. Do not answer a reference question from memory, and do not re-read a raw source the wiki already digested. If the wiki has no page for it, say so and offer to ingest the source rather than improvising an answer.
+
 ## Continuity
 
 Record decisions and important handoffs in `.agents/session-notes/`. Session notes are a decision log, not a second work queue.
