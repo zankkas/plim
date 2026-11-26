@@ -5,6 +5,7 @@ reader who wants to know why a rule exists before following it.
 
 | Page | Question it answers |
 |---|---|
+| [Running it autonomously](running-it-autonomously.md) | What must a runner honour for the kit to still mean anything? |
 | [Architecture](architecture.md) | What are the layers, and what does the agent load when? |
 | [Boot protocol](boot-protocol.md) | How does an agent get from a clone to a working session? |
 | [Design](design.md) | Who decides what — human, agent, judgment layer? |

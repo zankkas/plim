@@ -100,6 +100,9 @@ See `patterns/two-truths-split.md` and ADR-0001.
   workspace-hygiene skill weekly.
 - Not a task manager. Status lives in your tracker.
 - Not a memory system. Session notes record decisions, not conversation.
+- Not a runner. It states the five contracts an autonomous loop has to honour —
+  see [docs/running-it-autonomously.md](docs/running-it-autonomously.md) — and
+  ships none of the engine.
 - Not a product. It is a set of files that earn their keep by being read.
 
 ## The manual
