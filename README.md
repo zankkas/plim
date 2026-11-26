@@ -53,7 +53,7 @@ Until it prints `no drift found`, do not trust the workspace.
 |---|---|
 | `AGENTS.md` | the gateway a fresh clone boots into; onboarding replaces it with your adapter |
 | `templates/` | SOUL, PROFILE, compass and boot adapter, with placeholders |
-| `skills/` | five procedures: onboard, capture-as-you-go, close-session, run-evals, workspace-hygiene |
+| `skills/` | six procedures: onboard, capture-as-you-go, close-session, wiki, run-evals, workspace-hygiene |
 | `directives/` | five always-on rules: agent-execution-directive, no-documentation-garbage, skill-awareness-directive, spec-location-directive, environment-plumbing-directive |
 | `scripts/doctor.py` | the check above |
 | `tests/` | contract tests for the kit's own promises |
@@ -62,10 +62,11 @@ Until it prints `no drift found`, do not trust the workspace.
 
 The claims are checkable, and that is the whole design:
 
-- **The doctor checks five things** — skill shape, description budget, eval
-  cases, relative links, and status mirrors — and exits non-zero on drift.
-  It does not check ADRs, session notes, the wiki, or your judgment. It checks
-  the layer it was written for.
+- **The doctor checks six things** — skill shape, description budget, eval
+  cases, relative links, status mirrors, and the wiki (index entries resolve,
+  every page carries its frontmatter) — and exits non-zero on drift. It does not
+  check ADRs, session notes, or your judgment. It checks the layer it was
+  written for.
 - **Evals gate every skill.** A skill edit without a recorded eval pass does not
   ship (ADR-0003).
 - **`tests/` checks the kit's own contracts**: ADR format, wiki frontmatter, one

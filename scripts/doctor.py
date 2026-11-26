@@ -11,6 +11,8 @@ Checks
   3. evals      every skill ships eval cases that parse and have cases
   4. links      relative links in README and skills point at files that exist
   5. mirrors    no file claims to be a status tracker (status belongs in the live system)
+  6. wiki       the index resolves and every page carries its frontmatter, so
+                "check the wiki" is a gate and not a habit
 
 Exit 0 = clean. Exit 1 = drift found, do not report state as fact.
 """
@@ -22,6 +24,8 @@ import sys
 from pathlib import Path
 
 DESCRIPTION_BUDGET = 260  # bytes, injected into every session
+WIKI_KEYS = ("domain", "type", "updated", "sources")
+WIKI_EXEMPT = {"index", "log", "SCHEMA", "STARTER"}
 MIRROR_NAMES = re.compile(r"(status|tracker|backlog|dashboard)", re.IGNORECASE)
 LINK = re.compile(r"\[[^\]]+\]\(([^)#]+)\)")
 
@@ -118,12 +122,46 @@ def check_mirrors(root: Path) -> list[str]:
     return findings
 
 
+def check_wiki(root: Path) -> list[str]:
+    """The wiki is the reference layer: if it exists, it must be navigable and honest.
+
+    A wiki nobody can trust is worse than no wiki, because the agent reads it as
+    truth. This is the check that keeps "ask the wiki first" from being a habit.
+    """
+    wiki = root / "wiki"
+    if not wiki.is_dir():
+        return []
+    findings = []
+    index = wiki / "index.md"
+    if index.is_file():
+        for raw in LINK.findall(index.read_text()):
+            if raw.startswith(("http://", "https://", "mailto:", "#")):
+                continue
+            target = raw.split("#")[0]
+            if target and not (index.parent / target).exists():
+                findings.append(f"wiki/index.md links {raw}, which does not exist")
+    for page in sorted(wiki.rglob("*.md")):
+        rel = page.relative_to(wiki)
+        if rel.parts[0] == "templates" or page.stem in WIKI_EXEMPT:
+            continue
+        text = page.read_text()
+        block = re.match(r"^---\n(.*?)\n---\n", text, re.S)
+        if not block:
+            findings.append(f"wiki/{rel}: no frontmatter (the page cannot be filed or aged)")
+            continue
+        missing = [key for key in WIKI_KEYS if not re.search(rf"^{key}\s*:", block.group(1), re.M)]
+        if missing:
+            findings.append(f"wiki/{rel}: frontmatter missing {', '.join(missing)}")
+    return findings
+
+
 CHECKS = (
     ("skills", check_skills),
     ("budget", check_budget),
     ("evals", check_evals),
     ("links", check_links),
     ("mirrors", check_mirrors),
+    ("wiki", check_wiki),
 )
 
 

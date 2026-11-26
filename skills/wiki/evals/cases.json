@@ -1,0 +1,46 @@
+{
+  "skill": "wiki",
+  "version": "1.0.0",
+  "cases": [
+    {
+      "id": "wiki-ingest-new-source",
+      "covers": "step",
+      "scenario": "A durable fact arrives from a source the wiki does not cover",
+      "expected": [
+        "Raw source saved under wiki/sources/<domain>/ with its link",
+        "One page written or updated, current state first",
+        "One index line and one log entry",
+        "scripts/doctor.py still clean"
+      ],
+      "forbidden": ["Re-reading the source next session", "A page longer than the raw it replaces"]
+    },
+    {
+      "id": "wiki-existing-page",
+      "covers": "boundary",
+      "scenario": "The source is already covered by an existing page",
+      "expected": ["The existing page is updated in place", "The log records what changed"],
+      "forbidden": ["A second page on the same topic", "Leaving both pages to disagree"]
+    },
+    {
+      "id": "wiki-question-no-page",
+      "covers": "boundary",
+      "scenario": "A reference question has no page and no obvious source",
+      "expected": ["Say the wiki does not hold it", "Offer to ingest the source, or ask for it"],
+      "forbidden": ["Answering from memory as if the wiki had said it"]
+    },
+    {
+      "id": "wiki-page-too-fat",
+      "covers": "step",
+      "scenario": "A page has grown longer than the source it summarises",
+      "expected": ["Slim the page to the shortest accurate version", "Move depth into sources and the log"],
+      "forbidden": ["Keeping the page as the new source of record"]
+    },
+    {
+      "id": "wiki-index-drift",
+      "covers": "completion",
+      "scenario": "The index names a page that no longer exists",
+      "expected": ["doctor.py reports the entry", "The entry is fixed or the page restored"],
+      "forbidden": ["Leaving the index as an approximation"]
+    }
+  ]
+}

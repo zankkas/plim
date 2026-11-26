@@ -34,6 +34,8 @@ Search `index.md` first, then drill into pages. Answers citing wiki pages carry 
 ### Lint (periodic)
 Check for: stale claims superseded by newer sources, contradictions between pages, orphans with no inbound links, index drift, missing cross-references. Log the pass.
 
+Two of those are not left to the cadence: `scripts/doctor.py` fails the workspace when an `index.md` entry points at no file, or a page is missing its frontmatter. The periodic lint covers the judgement calls; the doctor covers the structural ones, every session, whether or not anyone remembered.
+
 ## Page conventions
 
 - **Pages are the shortest accurate version of the knowledge.** A compiled page may never exceed the raw docs it replaces. Depth (contradiction detail, verification narratives, history) lives in `ledger.md` and `log.md`, not in entity or concept pages.
